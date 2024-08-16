@@ -1,1 +1,10 @@
-# StarmachTimer
+# [StarmachTimer](https://timer.fpvone.cn)
+
+StarmachTimer是浙江比翼智慧科技股份有限公司基于RH为中国无人机竞速联赛定制的第一款赛事电子计时系统，系统以StarmachOS为核心，由比翼飞行网赛事平台，由StarmachTimer硬件终端、StarmachTimer软件终端、云端成绩实时展示系统、云端成绩算力系统等多模块组成，采用计时器+云平台服务，在计时器云原生技术底座上可实现系统通和数据通，为FPV赛事提供更高效、更智能、更专业的计时解决方案。
+
+# 功能
+
+* 支持成绩云同步
+* 支持成绩自动排序
+* 支持一键打印
+* 创建及管理赛事
