@@ -1,0 +1,13 @@
+{
+    "name": "Starmach Timer",
+    "author": "Starmach Timer",
+    "author_uri": "https://timer.fpvone.cn",
+    "description": "Upload lap times and leaderboards to the cloud for Chinese users. See https://timer.fpvone.cn for more information.",
+    "info_uri": "https://timer.fpvone.cn",
+    "license": "Starmach Timer",
+    "license_uri": "https://github.com/RotorHazard/RotorHazard/blob/main/LICENSE",
+    "version": "1.0",
+    "required_rhapi_version": "1.0",
+    "update_uri": null,
+    "text_domain": null
+}
