@@ -10,7 +10,7 @@ import Database
 
 def initialize(rhapi):
 
-    rhapi.fields.register_pilot_attribute( UIField("uuid", "飞手ID", UIFieldType.TEXT) )
+    # rhapi.fields.register_pilot_attribute( UIField("uuid", "飞手ID", UIFieldType.TEXT) )
 
     rhapi.ui.register_panel("format", "数据上传", "format")
     rhapi.fields.register_option( UIField("event_uuid", "赛事秘钥", UIFieldType.TEXT), "format" )
@@ -19,20 +19,13 @@ def initialize(rhapi):
 def runUploadBtn(args):
     args['rhapi'].ui.message_notify(args['rhapi'].__('开始上传数据.'))
 
-    uid_list_database = Database.PilotAttribute.query.all()
-    uid_list = []
-    for item in uid_list_database:
-        uid_list.append({
-            'id': item.id,
-            'num': item.value,
-        })
-
     keys = Database.GlobalSettings.query.filter_by(option_name='event_uuid').first().option_value
 
     SavedRaceLap = Database.SavedRaceLap.query.all()
     SavedRaceMeta = Database.SavedRaceMeta.query.all()
     RaceClass = Database.RaceClass.query.all()
     Heat = Database.Heat.query.all()
+    HeatNode = Database.HeatNode.query.all()
     Pilot = Database.Pilot.query.all()
     RaceFormat = Database.RaceFormat.query.all()
 
@@ -40,10 +33,10 @@ def runUploadBtn(args):
         'key': keys,
         'Pilot': Pilot,
         'Heat': Heat,
+        'HeatNode': HeatNode,
         'RaceClass': RaceClass,
         'SavedRaceMeta': SavedRaceMeta,
         'SavedRaceLap': SavedRaceLap,
-        'uid_list': uid_list,
         'RaceFormat': RaceFormat,
     }
 
@@ -56,7 +49,7 @@ class AlchemyEncoder(json.JSONEncoder):
         if isinstance(obj.__class__, DeclarativeMeta):
             mapped_instance = inspect(obj)
             fields = {}
-            for field in dir(obj): 
+            for field in dir(obj):
                 if field in [*mapped_instance.attrs.keys(), *custom_vars]:
                     data = obj.__getattribute__(field)
                     if field != 'query' \
